@@ -43,7 +43,7 @@ void Dynamic_array::grow_array() {
 
 void Dynamic_array::prepare_data() {
   std::ifstream database;
-  database.open("Pobrane/projekt1_dane.csv");
+  database.open("projekt1_dane.csv");
   if (database.is_open()) {
     std::cout << "File opened\n";
   } else {
@@ -201,7 +201,6 @@ void Dynamic_array::quick_sort(Video *arr, int const start, int const end) {
   if (start >= end)
     return;
 
-  // partitioning the array
   int const p = arr[(start + end) / 2].rating;
   int i = start;
   int j = end;
@@ -224,7 +223,6 @@ void Dynamic_array::quick_sort(Video *arr, int const start, int const end) {
 
   // _sorting the start part
   quick_sort(arr, start, j);
-
   // _sorting the end part
   quick_sort(arr, i, end);
 }
@@ -269,15 +267,14 @@ void Dynamic_array::merge(Video *arr, int const start, int const mid,
   }
 
   // Copy the remaining elements of
-  // start[], if there are any
+  // start array, if there are any
   while (index_sub_array_first < sub_array_first) {
     arr[index_merged_array] = start_array[index_sub_array_first];
     index_sub_array_first++;
     index_merged_array++;
   }
 
-  // Copy the remaining elements of
-  // end[], if there are any
+  // the same for the end arra
   while (index_sub_array_second < sub_array_second) {
     arr[index_merged_array] = end_array[index_sub_array_second];
     index_sub_array_second++;
@@ -373,7 +370,6 @@ void Dynamic_array::intro_sort(Video *arr, int const start, int const end,
 
   // _sorting the start part
   intro_sort(arr, start, j, max_depth - 1);
-
   // _sorting the end part
   intro_sort(arr, i, end, max_depth - 1);
   return;

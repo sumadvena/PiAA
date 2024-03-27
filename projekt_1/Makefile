@@ -1,2 +1,2 @@
-sortowanie: sort.cpp 
-	g++ sort.cpp dynarrandutils.cpp -o sortowanie 
+sortowanie: main.cpp 
+	g++ main.cpp dynarrandutils.cpp -o sortowanie 
