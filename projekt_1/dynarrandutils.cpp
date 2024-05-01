@@ -1,30 +1,31 @@
 #include "dynarrandutils.h"
 
-//--------------------------------------- Constructors 
+//--------------------------------------- Constructors
 
 Dynamic_array::Dynamic_array() {
-    _array = new Video[_capacity];
-    prepare_data();
-    std::cout << "Done importing\n";
-  };
+  _array = new Video[_capacity];
+  prepare_data();
+  std::cout << "Done importing\n";
+};
 
-Dynamic_array::Dynamic_array(int capacity, Dynamic_array *arr) : _capacity(capacity) {
-    // ensuring that array won't be bigger than filtered dataset
-    if (_capacity > arr->_size) {
-      _capacity = arr->_size;
+Dynamic_array::Dynamic_array(int capacity, Dynamic_array *arr)
+    : _capacity(capacity) {
+  // ensuring that array won't be bigger than filtered dataset
+  if (_capacity > arr->_size) {
+    _capacity = arr->_size;
+  }
+
+  _array = new Video[_capacity];
+  for (int i = 0; i < _capacity; i++) {
+    if (_size == _capacity) {
+      grow_array();
     }
+    this->_array[i] = arr->_array[i];
+    _size++;
+  }
 
-    _array = new Video[_capacity];
-    for (int i = 0; i < _capacity; i++) {
-      if (_size == _capacity) {
-        grow_array();
-      }
-      this->_array[i] = arr->_array[i];
-      _size++;
-    }
-
-    time_measure();
-  };
+  time_measure();
+};
 
 Dynamic_array::~Dynamic_array() { delete[] _array; };
 
@@ -183,12 +184,12 @@ void Dynamic_array::time_measure() {
       break;
     }
     }
-    
+
     if (i == 0) {
-        std::cout << "The median of this dataset is " << calc_median(copy_for_sort)
-            << std::endl;
-        std::cout << "The arithmetic mean of this dataset is "
-            << calc_mean(copy_for_sort) << std::endl;
+      std::cout << "The median of this dataset is "
+                << calc_median(copy_for_sort) << std::endl;
+      std::cout << "The arithmetic mean of this dataset is "
+                << calc_mean(copy_for_sort) << std::endl;
     }
     delete[] copy_for_sort;
   }
@@ -228,7 +229,7 @@ void Dynamic_array::quick_sort(Video *arr, int const start, int const end) {
 }
 
 void Dynamic_array::merge(Video *arr, int const start, int const mid,
-                         int const end) {
+                          int const end) {
   int const sub_array_first = mid - start + 1;
   int const sub_array_second = end - mid;
 
@@ -254,7 +255,8 @@ void Dynamic_array::merge(Video *arr, int const start, int const mid,
 
   // Merge the temp arrays back into
   // array[start..end]
-  while (index_sub_array_first < sub_array_first && index_sub_array_second < sub_array_second) {
+  while (index_sub_array_first < sub_array_first &&
+         index_sub_array_second < sub_array_second) {
     if (start_array[index_sub_array_first].rating <=
         end_array[index_sub_array_second].rating) {
       arr[index_merged_array] = start_array[index_sub_array_first];
@@ -274,7 +276,7 @@ void Dynamic_array::merge(Video *arr, int const start, int const mid,
     index_merged_array++;
   }
 
-  // the same for the end arra
+  // the same for the end array
   while (index_sub_array_second < sub_array_second) {
     arr[index_merged_array] = end_array[index_sub_array_second];
     index_sub_array_second++;
@@ -336,7 +338,7 @@ void Dynamic_array::insertion_sort(Video *arr, int const start, int const end) {
 }
 
 void Dynamic_array::intro_sort(Video *arr, int const start, int const end,
-                              int const max_depth) {
+                               int const max_depth) {
 
   int const current_size = end - start;
   if (current_size < 16) {
@@ -374,4 +376,3 @@ void Dynamic_array::intro_sort(Video *arr, int const start, int const end,
   intro_sort(arr, i, end, max_depth - 1);
   return;
 }
-
