@@ -125,3 +125,35 @@ Calculating the shortest path from source to one of the vertices took: 1166.24 u
         Matrix graph    |V| = 500       D = 1
 Calculating the shortest path from source to all of the vertices took: 1696.29 us
 Calculating the shortest path from source to one of the vertices took: 812.94 us
+
+        List graph      |V| = 1000      D = 0.25
+Calculating the shortest path from source to all of the vertices took: 51763.2 us
+Calculating the shortest path from source to one of the vertices took: 9215.31 us
+
+        List graph      |V| = 1000      D = 0.5
+Calculating the shortest path from source to all of the vertices took: 134820 us
+Calculating the shortest path from source to one of the vertices took: 23759.5 us
+
+        List graph      |V| = 1000      D = 0.75
+Calculating the shortest path from source to all of the vertices took: 214054 us
+Calculating the shortest path from source to one of the vertices took: 35120.4 us
+^[
+        List graph      |V| = 1000      D = 1
+Calculating the shortest path from source to all of the vertices took: 296890 us
+Calculating the shortest path from source to one of the vertices took: 48189.8 us
+
+        Matrix graph    |V| = 1000      D = 0.25
+Calculating the shortest path from source to all of the vertices took: 7540.55 us
+Calculating the shortest path from source to one of the vertices took: 3860.66 us
+
+        Matrix graph    |V| = 1000      D = 0.5
+Calculating the shortest path from source to all of the vertices took: 10190.7 us
+Calculating the shortest path from source to one of the vertices took: 5773 us
+
+        Matrix graph    |V| = 1000      D = 0.75
+Calculating the shortest path from source to all of the vertices took: 8064.89 us
+Calculating the shortest path from source to one of the vertices took: 3871.28 us
+
+        Matrix graph    |V| = 1000      D = 1
+Calculating the shortest path from source to all of the vertices took: 6499.35 us
+Calculating the shortest path from source to one of the vertices took: 2460.09 us
