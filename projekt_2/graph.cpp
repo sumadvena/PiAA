@@ -81,7 +81,7 @@ List_graph::List_graph(int vertices, float density_percent)
         i--;
         continue;
       }
-      add_edge(first_vertex, second_vertex, weight);
+      insert_edge(first_vertex, second_vertex, weight);
     }
 
     // measurements
@@ -92,7 +92,7 @@ List_graph::List_graph(int vertices, float density_percent)
       t_t_t = dijkstra_to_chosen(value_gen('v', V), value_gen('v', V));
     }
     time_for_two += t_t_t;
-    
+
     delete[] adj;
   }
 
@@ -101,7 +101,7 @@ List_graph::List_graph(int vertices, float density_percent)
   print_measures_mean();
 }
 
-void List_graph::add_edge(int first_vertex, int second_vertex, int weight) {
+void List_graph::insert_edge(int first_vertex, int second_vertex, int weight) {
   adj[first_vertex].emplace_back(second_vertex, weight);
   adj[second_vertex].emplace_back(first_vertex, weight);
 }
@@ -155,12 +155,14 @@ int List_graph::dijkstra_to_others(int source) {
         path.push_back(curr);
         curr = parents[curr];
       }
-      //   std::reverse(path.begin(), path.end());
-      //   printf("Vertex %d: Distance = %d, Path: ", i, distance);
-      //   for (int vertex : path) {
-      //     printf("%d -> ", vertex);
-      //   }
-      //   printf("and back\n");
+      if (V <= 10) {
+        std::reverse(path.begin(), path.end());
+        printf("Vertex %d: Distance = %d, Path: ", i, distance);
+        for (int vertex : path) {
+          printf("%d -> ", vertex);
+        }
+        printf("and back\n");
+      }
     }
   }
 
@@ -209,7 +211,8 @@ int List_graph::dijkstra_to_chosen(int source, int destination) {
 
   // Check if a path from source to destination exists
   if (distances[destination] == 999) {
-    // printf("\nNo path exists from source vertex %d to destination vertex %d\n",
+    // printf("\nNo path exists from source vertex %d to destination vertex
+    // %d\n",
     //        source, destination);
     return -1;
   }
@@ -221,16 +224,18 @@ int List_graph::dijkstra_to_chosen(int source, int destination) {
     path.push_back(curr);
     curr = parents[curr];
   }
-  // std::reverse(path.begin(), path.end());
-  //
-  // printf(
-  //     "\nPath and distance from source vertex %d to destination vertex
-  //     %d:\n", source, destination);
-  // printf("Distance = %d, Path: ", distance);
-  // for (int vertex : path) {
-  //   printf("%d -> ", vertex);
-  // }
-  // printf("and back\n");
+  if (V <= 10) {
+    std::reverse(path.begin(), path.end());
+
+    printf(
+        "\nPath and distance from source vertex %d to destination vertex %d:\n",
+        source, destination);
+    printf("Distance = %d, Path: ", distance);
+    for (int vertex : path) {
+      printf("%d -> ", vertex);
+    }
+    printf("and back\n");
+  }
 
   steady_clock::time_point end = steady_clock::now();
   return duration_cast<microseconds>(end - begin).count();
@@ -264,7 +269,7 @@ Matrix_graph::Matrix_graph(int vertices, float density_percent)
         i--;
         continue;
       }
-      add_edge(first_vertex, second_vertex, weight);
+      insert_edge(first_vertex, second_vertex, weight);
     }
 
     // measurements
@@ -285,7 +290,8 @@ Matrix_graph::Matrix_graph(int vertices, float density_percent)
   print_measures_mean();
 }
 
-void Matrix_graph::add_edge(int first_vertex, int second_vertex, int weight) {
+void Matrix_graph::insert_edge(int first_vertex, int second_vertex,
+                               int weight) {
   adj[first_vertex][second_vertex] = weight;
   adj[second_vertex][first_vertex] = weight;
 }
@@ -346,12 +352,14 @@ int Matrix_graph::dijkstra_to_others(int source) {
         path.push_back(curr);
         curr = parents[curr];
       }
-      // std::reverse(path.begin(), path.end());
-      // printf("Vertex %d: Distance = %d, Path: ", i, distance);
-      // for (int vertex : path) {
-      //   printf("%d -> ", vertex);
-      // }
-      // printf("and back\n");
+      if (V <= 10) {
+        std::reverse(path.begin(), path.end());
+        printf("Vertex %d: Distance = %d, Path: ", i, distance);
+        for (int vertex : path) {
+          printf("%d -> ", vertex);
+        }
+        printf("and back\n");
+      }
     }
   }
 
@@ -406,7 +414,8 @@ int Matrix_graph::dijkstra_to_chosen(int source, int destination) {
 
   // Check if a path from source to destination exists
   if (distances[destination] == 999) {
-    // printf("\nNo path exists from source vertex %d to destination vertex %d\n",
+    // printf("\nNo path exists from source vertex %d to destination vertex
+    // %d\n",
     //        source, destination);
     return -1;
   }
@@ -418,16 +427,18 @@ int Matrix_graph::dijkstra_to_chosen(int source, int destination) {
     path.push_back(curr);
     curr = parents[curr];
   }
-  // std::reverse(path.begin(), path.end());
-  //
-  // printf(
-  //     "\nPath and distance from source vertex %d to destination vertex
-  //     %d:\n", source, destination);
-  // printf("Distance = %d, Path: ", distance);
-  // for (int vertex : path) {
-  //   printf("%d -> ", vertex);
-  // }
-  // printf("and back\n");
+  if (V <= 10) {
+    std::reverse(path.begin(), path.end());
+
+    printf(
+        "\nPath and distance from source vertex %d to destination vertex %d:\n",
+        source, destination);
+    printf("Distance = %d, Path: ", distance);
+    for (int vertex : path) {
+      printf("%d -> ", vertex);
+    }
+    printf("and back\n");
+  }
 
   steady_clock::time_point end = steady_clock::now();
   return duration_cast<microseconds>(end - begin).count();

@@ -6,7 +6,7 @@ typedef std::pair<int, int> int_pair;
 class Graph {
 protected:
   int V; // no. of vertices
-  int number_of_tests = 100;
+  int number_of_tests = 1;
   float density_percent;
   double time_for_all = 0, time_for_two = 0;
 
@@ -17,7 +17,7 @@ protected:
 
   Graph(int vertices, float density_percent)
       : V(vertices), density_percent(density_percent){};
-  virtual void add_edge(int first_vertex, int second_vertex, int weight) = 0;
+  virtual void insert_edge(int first_vertex, int second_vertex, int weight) = 0;
   virtual void print_graph() = 0;
 
   virtual int dijkstra_to_others(int source) = 0;
@@ -26,7 +26,7 @@ protected:
 
 class List_graph : public Graph {
   std::list<int_pair> *adj; // vertex and weight of every edge
-  void add_edge(int first_vertex, int second_vertex, int weight) override;
+  void insert_edge(int first_vertex, int second_vertex, int weight) override;
 
 public:
   List_graph(int vertices, float density_percent);
@@ -40,7 +40,7 @@ public:
 
 class Matrix_graph : public Graph {
   std::vector<std::vector<int>> adj;
-  void add_edge(int first_vertex, int second_vertex, int weight) override;
+  void insert_edge(int first_vertex, int second_vertex, int weight) override;
 
 public:
   Matrix_graph(int vertices, float density_percent);
