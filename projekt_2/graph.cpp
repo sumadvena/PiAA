@@ -106,15 +106,6 @@ void List_graph::insert_edge(int first_vertex, int second_vertex, int weight) {
   adj[second_vertex].emplace_back(first_vertex, weight);
 }
 
-void List_graph::print_graph() {
-  for (int i = 0; i < V * density_percent; i++) {
-    for (auto vertex : adj[i]) {
-      std::cout << i << " -> " << vertex.first << " weighting " << vertex.second
-                << std::endl;
-    }
-  }
-}
-
 int List_graph::dijkstra_to_others(int source) {
   // std::cout << "  hello from dto " << V << " " << density_percent << "\n";
   steady_clock::time_point begin = steady_clock::now();
@@ -143,19 +134,19 @@ int List_graph::dijkstra_to_others(int source) {
     }
   }
 
-  // printf("\nPaths and distances from source vertex %d to all other
-  // vertices:\n",
-  //        source);
-  for (int i = 0; i < V; ++i) {
-    if (i != source) {
-      int distance = distances[i];
-      std::vector<int> path;
-      int curr = i;
-      while (curr != -1) {
-        path.push_back(curr);
-        curr = parents[curr];
-      }
-      if (V <= 10) {
+  if (V <= 10 && number_of_tests == 1) {
+    printf(
+        "\nPaths and distances from source vertex %d to all other vertices:\n",
+        source);
+    for (int i = 0; i < V; ++i) {
+      if (i != source) {
+        int distance = distances[i];
+        std::vector<int> path;
+        int curr = i;
+        while (curr != -1) {
+          path.push_back(curr);
+          curr = parents[curr];
+        }
         std::reverse(path.begin(), path.end());
         printf("Vertex %d: Distance = %d, Path: ", i, distance);
         for (int vertex : path) {
@@ -224,7 +215,7 @@ int List_graph::dijkstra_to_chosen(int source, int destination) {
     path.push_back(curr);
     curr = parents[curr];
   }
-  if (V <= 10) {
+  if (V <= 10 && number_of_tests == 1) {
     std::reverse(path.begin(), path.end());
 
     printf(
@@ -296,15 +287,6 @@ void Matrix_graph::insert_edge(int first_vertex, int second_vertex,
   adj[second_vertex][first_vertex] = weight;
 }
 
-void Matrix_graph::print_graph() {
-  for (int i = 0; i < V; i++) {
-    for (int j = 0; j < V; j++) {
-      std::cout << adj[i][j] << " ";
-    }
-    std::cout << std::endl;
-  }
-}
-
 int Matrix_graph::dijkstra_to_others(int source) {
   // std::cout << "  hello from dto " << V << " " << density_percent << "\n";
   steady_clock::time_point begin = steady_clock::now();
@@ -340,19 +322,19 @@ int Matrix_graph::dijkstra_to_others(int source) {
     }
   }
 
-  // printf("\nPaths and distances from source vertex %d to all other
-  // vertices:\n",
-  //        source);
-  for (int i = 0; i < V; ++i) {
-    if (i != source) {
-      int distance = distances[i];
-      std::vector<int> path;
-      int curr = i;
-      while (curr != -1) {
-        path.push_back(curr);
-        curr = parents[curr];
-      }
-      if (V <= 10) {
+  if (V <= 10 && number_of_tests == 1) {
+    printf(
+        "\nPaths and distances from source vertex %d to all other vertices:\n",
+        source);
+    for (int i = 0; i < V; ++i) {
+      if (i != source) {
+        int distance = distances[i];
+        std::vector<int> path;
+        int curr = i;
+        while (curr != -1) {
+          path.push_back(curr);
+          curr = parents[curr];
+        }
         std::reverse(path.begin(), path.end());
         printf("Vertex %d: Distance = %d, Path: ", i, distance);
         for (int vertex : path) {
@@ -427,7 +409,7 @@ int Matrix_graph::dijkstra_to_chosen(int source, int destination) {
     path.push_back(curr);
     curr = parents[curr];
   }
-  if (V <= 10) {
+  if (V <= 10 && number_of_tests == 1) {
     std::reverse(path.begin(), path.end());
 
     printf(
