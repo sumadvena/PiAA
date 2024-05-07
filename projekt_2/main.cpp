@@ -1,10 +1,10 @@
 #include "graph.h"
 
 int main() {
-  Matrix_graph(10, 1);
-  Matrix_graph(11, 1);
+  Matrix_graph(10, 0.75);
+  // Matrix_graph(11, 1);
   List_graph(10, 1);
-  List_graph(10, 1);
+  // List_graph(10, 1);
   // List_graph(10, 0.25);
   // List_graph(10, 0.5);
   // List_graph(10, 0.75);

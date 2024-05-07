@@ -10,7 +10,7 @@ protected:
   float density_percent;
   double time_for_all = 0, time_for_two = 0;
 
-  int calculate_edges() { return (density_percent * V * (V - 1)) / 2; }
+  int calculate_edges() { return (density_percent * (V * (V - 1))) / 2; }
   int value_gen(char type, int vertices_number = 0);
   double arithmetic_mean(double value) { return value / number_of_tests; }
   void print_measures_mean();
