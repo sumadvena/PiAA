@@ -1,4 +1,4 @@
-# Projekty na Projektowanie i Analizę Algorytmów
+# Projects for designing and analyzing alogrithms university course
 
 ### First project
 
