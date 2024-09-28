@@ -1,4 +1,4 @@
-#include "dynarrandutils.h"
+#include "dynamic_array.h"
 
 //--------------------------------------- Constructors
 

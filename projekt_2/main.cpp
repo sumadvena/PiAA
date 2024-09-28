@@ -1,4 +1,5 @@
-#include "graph.h"
+#include "list_graph.h"
+#include "matrix_graph.h"
 
 int main() {
   Matrix_graph(10, 0.75);

@@ -1,3 +1,8 @@
+#pragma once
+
+#ifndef GRAPH_H
+#define GRAPH_H
+
 #include <list>
 #include <vector>
 
@@ -23,24 +28,4 @@ protected:
   virtual int dijkstra_to_chosen(int source, int destination) = 0;
 };
 
-class List_graph : public Graph {
-  std::list<int_pair> *adj; // vertex and weight of every edge
-  void insert_edge(int first_vertex, int second_vertex, int weight) override;
-
-  int dijkstra_to_others(int source) override;
-  int dijkstra_to_chosen(int source, int destination) override;
-
-public:
-  List_graph(int vertices, float density_percent);
-};
-
-class Matrix_graph : public Graph {
-  std::vector<std::vector<int>> adj;
-  void insert_edge(int first_vertex, int second_vertex, int weight) override;
-
-  int dijkstra_to_others(int source) override;
-  int dijkstra_to_chosen(int source, int destination) override;
-
-public:
-  Matrix_graph(int vertices, float density_percent);
-};
+#endif // !GRAPH_H

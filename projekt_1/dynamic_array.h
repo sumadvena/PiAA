@@ -1,20 +1,14 @@
 #pragma once
 
-#ifndef DYNARRANDUTILS_H
-#define DYNARRANDUTILS_H
+#ifndef DYNAMIC_ARRAY_H
+#define DYNAMIC_ARRAY_H
 
+#include "video.h"
 #include <chrono>
 #include <cmath>
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include <string>
-
-struct Video {
-  int number = -1;
-  std::string title = "wrong";
-  float rating = -1.0;
-};
 
 class Dynamic_array {
   Video *_array = NULL;
@@ -46,4 +40,4 @@ private:
                   int const max_depth);
 };
 
-#endif // !DYNARRANDUTILS_H
+#endif // !DYNAMIC_ARRAY_H
